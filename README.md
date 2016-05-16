@@ -1,5 +1,7 @@
 # git rebase talk
 
+go to [here](http://bkulyk.github.io/git-rebase-talk/index.html)
+
 covers:
 
 1. squashing
