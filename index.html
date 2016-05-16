@@ -1,0 +1,278 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<title>Git Rebase - Brian Kulyk</title>
+
+		<link rel="stylesheet" href="css/reveal.css">
+		<link rel="stylesheet" href="css/theme/moon.css">
+
+		<!-- Theme used for syntax highlighting of code -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+
+		<!-- Printing and PDF exports -->
+		<script>
+			var link = document.createElement( 'link' );
+			link.rel = 'stylesheet';
+			link.type = 'text/css';
+			link.href = window.location.search.match( /print-pdf/gi ) ? 'css/print/pdf.css' : 'css/print/paper.css';
+			document.getElementsByTagName( 'head' )[0].appendChild( link );
+		</script>
+	</head>
+	<body>
+		<div class="reveal">
+			<div class="slides">
+
+<section>
+	<h1>Hi</h1>
+	<div class='fragment'>
+		<p>I'm Brian.</p>
+	</div>
+	<p class='fragment'>Let's talk about...</p>
+</section>
+
+<section>
+  <h1>git rebase</h1>
+  <p class='fragment'>It's scary.</p>
+  <p class='fragment'><img src='img/do-it.jpg' /></p>
+</section>
+
+<section>
+	<h3>The Problem</h3>
+	<p>hard to read history:</p>
+	<ul>
+		<li>Commits out of order</li>
+		<li>Comments are worthless</li>
+		<li>Merge commits are in the way and don't add anything</li>
+	</ul>
+</section>
+
+<section>
+	<img src='img/messy-1.png' />
+	<p class='fragment'>worthless messages</p>
+	<p class='fragment'>why?</p>
+</section>
+
+<section>
+	<img src='img/go-home.jpg' />
+</section>
+
+<section>
+	<h4>reek, rubocop...</h4>
+	<img src='img/messy-2.png' />
+	<p>who cares?</p>
+</section>
+
+<section>
+	<h4>indentation, simplified, removed 0 lines...</h4>
+	<img src='img/messy-3.png' />
+	<p>who cares?</p>
+</section>
+
+<section>
+	<img src='img/messy-4.png' />
+	<p>blah</p>
+</section>
+
+<section>
+	<img src='img/messy-5.png' />
+	<p>blah</p>
+</section>
+
+<section>
+	<img src='img/messy-6.png' />
+	<p>blah</p>
+</section>
+
+<section>
+	<p>What can we do?</p>
+	<img class='fragment' src='img/putin-squash.jpg' />
+</section>
+
+<section>
+	<h4>messy history</h4>
+	<img src='img/squash-history.png' />
+</section>
+
+<section>
+	<h4>git rebase -i HEAD~4</h4>
+	<img src='img/squash-1.png' />
+</section>
+
+<section>
+	<h4>squash</h4>
+	keep the first 'pick' and change the rest of the ones we want to squash to 's' or 'squash'
+	<img src='img/squash-2.png' />
+	<p class='fragment'>[esq] :wq</p>
+</section>
+
+<section>
+	<h4>Time to write an new commit message</h4>
+	<img src='img/squash-3.png' />
+</section>
+
+<section>
+	<h4>Enter a decent commit message for the sqashed commit</h4>
+	<img src='img/squash-4.png' />
+	<p class='fragment'><small>[esq] :wq</small></p>
+</section>
+
+<section>
+	<h4>try including the jira number :)</h4>
+	<img src='img/jira.jpg' />
+	<p class='fragment'><small>I just really want to include this image.</small></p>
+</section>
+
+<section>
+	<h4>Updated commit history</h4>
+	<small>git log</small>
+	<img src='img/squash-done.png' />
+</section>
+
+<section>
+	<img src='img/success.jpg' />
+</section>
+
+<section>
+	<h4>Still kinda ugly though</h4>
+	<p>now two comments about the same thing separated by other commits</p>
+	<small>git log</small>
+	<img src='img/squash-done.png' />
+</section>
+
+<section>
+	<h4>Reorder Commits</h4>
+	<p>`git rebase -i HEAD~4`</p>
+	<img src='img/reorder-1.png' />
+	<p class='fragment'><small>[esq] :wq</small></p>
+</section>
+
+<section>
+	<h4>Commits reordered</h4>
+	<img src='img/reorder-2.png' />
+	<p class='fragment'><small>[esq] :wq</small></p>
+	<div class='fragment'>
+		<h4>Woot!!</h4>
+		<img src='img/reorder-done.png' />
+	</div>
+</section>
+
+<section>
+	<img src='img/success-2.jpg' />
+</section>
+
+<section>
+	<img src='img/more-squash.jpg' />
+</section>
+
+<section>
+	<p>git rebase -i HEAD~2</p>
+	<p>choose item(s) to be squashed</p>
+	<img src='img/squashed-again.png'/>
+	<p class='fragment'><small>[esq] :wq</small></p>
+</section>
+
+<section>
+	<h4>Success!</h4>
+	<img src='img/squashed-again-done.png'/>
+</section>
+
+<section>
+	<img src='img/success-3.jpg' />
+</section>
+
+<section>
+	<h4>But... how could we have prevented having to reorder the commits?</h4>
+	<h5>'cause that part was hard :(</h5>
+	<img src='img/sad-bear.jpg' />
+</section>
+
+<section>
+	<h4>Don't `git merge development`</h4>
+	<div class='fragment'>
+		<p>instead:</p>
+		<h4>Use `git pull --rebase origin development`</h4>
+
+		<img src='img/rebaste.jpg' />
+	</div>
+</section>
+
+<section>
+	<p>what does this do?</p>
+	<ul>
+	  <li class='fragment'>rewinds the git playhead back</li>
+	  <li class='fragment'>pulls the changes</li>
+	  <li class='fragment'>rewrites your changes at the end</li>
+	  <li class='fragment'>makes happy</li>
+	</ul>
+</section>
+
+<section>
+	<h4>Let's try it</h4>
+	<p>git log</p>
+	<img src='img/pull-rebase-1.png' />
+</section>
+
+<section>
+	<p>git pull --rebase origin development</p>
+	<img src='img/pull-rebase-2.png' />
+	<p>removed commits that are not in development, pull changes from development
+	reapplied our commits at the end.</p>
+</section>
+
+<section>
+	<h4>Updated git log</h4>
+	<p>Looks like there were at ton of commits we forgot to reorder and squash</p>
+	<img src='img/pull-rebase-3.png' />
+</section>
+
+<section>
+	<p>`git rebase -i HEAD~20`</p>
+	<img src='img/squash-last-time-1.png' />
+	<p>select commits to squash</p>
+	<p><small>[esq] :wq</small></p>
+	<p>fix commit message</p>
+	<p><small>[esq] :wq</small></p>
+</section>
+
+<section>
+	<h4>Final Commit History</h4>
+	<img src='img/squash-last-time-2.png' />
+	<h4></h4>
+	<p>`git push -f origin bk-save-searches-modal`</p>
+</section>
+
+<section>
+	<img src='img/amazing.jpg' />
+</section>
+
+<section>
+	<h1>Remember</h1>
+	<img src='img/--rebase.jpg' />
+</section>
+
+			</div>
+		</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.js"></script>
+
+		<script>
+			// More info https://github.com/hakimel/reveal.js#configuration
+			Reveal.initialize({
+				history: true,
+
+				// More info https://github.com/hakimel/reveal.js#dependencies
+				dependencies: [
+					{ src: 'plugin/markdown/marked.js' },
+					{ src: 'plugin/markdown/markdown.js' },
+					{ src: 'plugin/notes/notes.js', async: true },
+					{ src: 'plugin/zoom-js/zoom.js', async: true },
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+		</script>
+	</body>
+</html>
