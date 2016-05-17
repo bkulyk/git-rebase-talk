@@ -7,7 +7,7 @@
 		<title>Git Rebase - Brian Kulyk</title>
 
 		<link rel="stylesheet" href="css/reveal.css">
-		<link rel="stylesheet" href="css/theme/blood.css">
+		<link rel="stylesheet" href="css/theme/black.css">
 
 		<!-- Theme used for syntax highlighting of code -->
 		<link rel="stylesheet" href="lib/css/zenburn.css">
@@ -204,7 +204,7 @@
 	<p>what does this do?</p>
 	<ul>
 	  <li class='fragment'>rewinds the git playhead back</li>
-	  <li class='fragment'>pulls the changes</li>
+	  <li class='fragment'>pulls the changes from remote branch</li>
 	  <li class='fragment'>rewrites your changes at the end</li>
 	  <li class='fragment'>makes happy</li>
 	</ul>
@@ -219,8 +219,8 @@
 <section>
 	<p>git pull --rebase origin development</p>
 	<img src='img/pull-rebase-2.png' />
-	<p>removed commits that are not in development, pull changes from development
-	reapplied our commits at the end.</p>
+	<p>remove commits that are not in development, pull changes from development,
+	reapply our commits at the end.</p>
 </section>
 
 <section>
