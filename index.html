@@ -27,9 +27,7 @@
 
 <section>
 	<h1>Hi</h1>
-	<div class='fragment'>
-		<p>I'm Brian.</p>
-	</div>
+	<p class='fragment'>I'm Brian.</p>
 	<p class='fragment'>Let's talk about...</p>
 </section>
 
@@ -51,54 +49,90 @@
 </section>
 
 <section>
+	<h4>asdf, fix stuff, .</h4>
 	<img src='img/messy-1.png' />
 	<p class='fragment'>worthless messages</p>
 	<p class='fragment'>why?</p>
 </section>
 
 <section>
-	<img src='img/go-home.jpg' />
+	<h4>probably because</h4>
+	<div class='fragment'>
+		<img src='img/go-home.jpg' />
+	</div>
 </section>
 
 <section>
-	<h4>reek, rubocop...</h4>
-	<img src='img/messy-2.png' />
-	<p>who cares?</p>
+	<h2>Let's look at some more quotes</h2>
+	<p>(commit messages)</p>
 </section>
 
 <section>
-	<h4>indentation, simplified, removed 0 lines...</h4>
-	<img src='img/messy-3.png' />
-	<p>who cares?</p>
+	<h2>"Indentation"</h2>
+	<div class='fragment'>
+		<p>&mdash; Serj Shine</p>
+		<p><img src='img/messy-3.png' /></p>
+	</div>
 </section>
 
 <section>
-	<img src='img/messy-4.png' />
-	<p>blah</p>
+	<h2>"mroe"</h2>
+	<div class='fragment'>
+		<p>&mdash; Lu Zou</p>
+		<p><img src='img/messy-4.png' /></p>
+	</div>
 </section>
 
 <section>
-	<img src='img/messy-5.png' />
-	<p>blah</p>
+	<h2>"remove unused constant"</h2>
+	<div class='fragment'>
+		<p>&mdash; Shehan Perera</p>
+		<p><img src='img/messy-5.png' /></p>
+	</div>
 </section>
 
 <section>
-	<img src='img/messy-6.png' />
-	<p>blah</p>
+	<h2>"attempt to fail Jenkins again"</h2>
+	<div class='fragment'>
+		<p>&mdash; Shaun Shapiro</p>
+		<p><img src='img/messy-6.png' /></p>
+	</div>
 </section>
 
 <section>
-	<p>What can we do?</p>
+	<h2>"..."</h2>
+	<div class='fragment'>
+		<p>&mdash; Maria Zhao</p>
+		<p><img src='img/messy-7.png' /></p>
+	</div>
+</section>
+
+<section>
+	<h2>"oops missed"</h2>
+	<div class='fragment'>
+		<p>&mdash; Ankit Gupta</p>
+		<p><img src='img/messy-8.png' /></p>
+	</div>
+</section>
+
+<section>
+	<h2>"vcr"</h2>
+	<p class='fragment'>&mdash; everyone</p>
+</section>
+
+<section>
+	<h4>What Can We Do?</h4>
 	<img class='fragment' src='img/putin-squash.jpg' />
 </section>
 
 <section>
-	<h4>messy history</h4>
+	<h4>Let's Squash Some of These Messy Commits</h4>
 	<img src='img/squash-history.png' />
 </section>
 
 <section>
-	<h4>git rebase -i HEAD~4</h4>
+	<p>Count number of items we are working with in `git log`, use this for the following command</p>
+	<p>git rebase -i HEAD~4</p>
 	<img src='img/squash-1.png' />
 </section>
 
@@ -110,7 +144,7 @@
 </section>
 
 <section>
-	<h4>Time to write an new commit message</h4>
+	<h4>Next you see a screen where you can a chance to correct your lazy messages</h4>
 	<img src='img/squash-3.png' />
 </section>
 
@@ -249,14 +283,56 @@
 </section>
 
 <section>
-	<h4>One last thing - Amend Author</h4>
+	<p>
+		You may have noticed that the last commit has the wrong author, that's because
+		I squashed my commits into one of Maria's. Now she gets all the credit for my
+		hard work.
+	</p>
+	<div class='fragment'>
+		<img src='img/oh-wait.jpg' />
+	</div>
+</section>
+
+<section>
+	<h4>Amend Author</h4>
 	<p>git commit --amend --author  "Brian Kulyk &lt;brian.kulyk@move.com&gt;"</p>
 	<img src='img/amend.png'/>
 </section>
 
 <section>
+	<h1>PR Merge Conflicts</h1>
+	<p>When submitting my PR, I was warned about a merge conflict that needed to be
+		dealt with manually.  We can use rebase to fix this too.</p>
+</section>
+
+<section>
+	<p>git pull --rebase origin development</p>
+	<p>conflict</p>
+	<img src='img/conflict-1.png' />
+</section>
+
+<section>
+	<p>`git status` to see conflicted files</p>
+	<p>resolve the conflict manually</p>
+	<p>`git add .`<br/>
+			git rebase --continue`</p>
+	<img src='img/conflict-2.png' />
+</section>
+
+<section>
+	<h4>Done</h4>
+	<img src='img/conflict-done.png' />
+	<p>Notice there is no extra merge commit, which is good... 'cause those are gross.</p>
+</section>
+
+<section>
+	<img src='img/awesome.jpg' />
+</section>
+
+<section>
 	<h1>Remember</h1>
 	<img src='img/--rebase.jpg' />
+	<p>use `git pull --rebase`</p>
 </section>
 
 			</div>
@@ -272,8 +348,6 @@
 
 				// More info https://github.com/hakimel/reveal.js#dependencies
 				dependencies: [
-					{ src: 'plugin/markdown/marked.js' },
-					{ src: 'plugin/markdown/markdown.js' },
 					{ src: 'plugin/notes/notes.js', async: true },
 					{ src: 'plugin/zoom-js/zoom.js', async: true },
 					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
